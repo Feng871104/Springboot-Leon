@@ -58,7 +58,7 @@ public class SwaggerConfig {
                         .contact(new Contact()
                                 .name("Leon")
                                 .email("")
-                                .url("https://github.com/Leon-Project")
+                                .url("https://github.com/Feng871104/Springboot-Leon")
                         )
                         .license(new License()
                                 .name("Apache 2.0")
