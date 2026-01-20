@@ -21,4 +21,9 @@ public class RedirectController {
         return "forward:/index.html";
     }
 
+    @GetMapping(value = {"/ng-app/","/ng-app/**/{path:[^\\.]*}"})
+    public String forwardNg() {
+        return "forward:/ng-app/index.html";
+    }
+
 }

@@ -85,11 +85,14 @@ public class SecurityConfig {
                                 "/swagger-ui/**", "/v3/api-docs/**", "/api/post/**"
                         )
                         .permitAll()
-                        // frontend SPA
+                        // React SPA
                         .requestMatchers("/index.html", "/**.svg", "/static/**",
                                 "/assets/**", "/login", "/backend/**",
                                 "/about", "/projects/**", "/post/**"
                         )
+                        .permitAll()
+                        // Angular SPA
+                        .requestMatchers("/ng-app/**","/static/ng-app/**")
                         .permitAll()
                         .anyRequest()
                         .authenticated())
