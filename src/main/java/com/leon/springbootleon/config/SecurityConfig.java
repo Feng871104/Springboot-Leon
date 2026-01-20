@@ -94,6 +94,9 @@ public class SecurityConfig {
                         // Angular SPA
                         .requestMatchers("/ng-app/**","/static/ng-app/**")
                         .permitAll()
+                        // actuator
+                        .requestMatchers("/actuator/prometheus", "/actuator/health")
+                        .permitAll()
                         .anyRequest()
                         .authenticated())
                 .cors(cors -> cors.configurationSource(req -> {
