@@ -25,7 +25,7 @@ public class CustomSecurityHandler implements AccessDeniedHandler, Authenticatio
 
     @Override
     public void commence(@NonNull HttpServletRequest request, HttpServletResponse response, @NonNull AuthenticationException authException) throws IOException {
-        CustomApiResponse errorResponse = new CustomApiResponse(HttpStatus.UNAUTHORIZED, "Please Login");
+        CustomApiResponse errorResponse = new CustomApiResponse(HttpStatus.UNAUTHORIZED, "Please Login, Error: %s".formatted(authException.getMessage()));
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setContentType("application/json;charset=UTF-8");
         objectMapper.writeValue(response.getWriter(), errorResponse);
