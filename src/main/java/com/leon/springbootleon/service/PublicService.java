@@ -1,5 +1,7 @@
 package com.leon.springbootleon.service;
 
+import com.leon.springbootleon.model.dto.response.NexonOcidDto;
+import com.leon.springbootleon.service.client.NexonOpenApiClient;
 import com.leon.springbootleon.utils.DateUtils;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -23,8 +25,11 @@ public class PublicService {
 
     private final ObjectMapper objectMapper;
 
-    public PublicService(ObjectMapper objectMapper) {
+    private final NexonOpenApiClient nexonOpenApiClient;
+
+    public PublicService(ObjectMapper objectMapper, NexonOpenApiClient nexonOpenApiClient) {
         this.objectMapper = objectMapper;
+        this.nexonOpenApiClient = nexonOpenApiClient;
     }
 
     @SneakyThrows
@@ -70,5 +75,9 @@ public class PublicService {
         return isHeader
                 .and(isTargetSchool)
                 .and(needSchool);
+    }
+
+    public NexonOcidDto getOcid(String characterName) {
+        return nexonOpenApiClient.getOcid(characterName);
     }
 }
